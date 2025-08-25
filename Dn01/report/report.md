@@ -1,12 +1,5 @@
----
-author: "Alen Kurtagić"
-title: "SOR Iteration for Sparse Matrices"
-date: " "
----
-
-
-# Introduction
-
+# SOR Iteration for Sparse Matrices
+**Alen Kurtagić**
 
 # Sparse matrix
 A matrix is typically represented in a dense format as a two-dimensional array.  
@@ -167,4 +160,4 @@ Optimal ω ≈ 1.15 with 22.0 iterations.
 
 
 
-In our experiments, the optimal parameter was found near $\omega \approx 1.15$, reducing the iteration count to about 22.  
+In our experiments, the optimal parameter was found near $\omega \approx 1.15$, reducing the iteration count to 22.  
