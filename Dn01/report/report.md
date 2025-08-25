@@ -1,12 +1,5 @@
----
-author: "Alen Kurtagić"
-title: "SOR Iteration for Sparse Matrices"
-date: " "
----
-
-
-# Introduction
-
+# SOR Iteration for Sparse Matrices
+**Alen Kurtagić**
 
 # Sparse matrix
 A matrix is typically represented in a dense format as a two-dimensional array.  
