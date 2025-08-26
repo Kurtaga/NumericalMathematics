@@ -120,29 +120,26 @@ title!("Taylor Approximation vs Groundtruth")
 
 ![](figures/report_2_1.png)
 
-
-
-
 # Gauss–Legendre Quadrature
-For moderate arguments ($2 \leq |x| \leq 5$), we approximate the standard normal CDF with one step
+
+For moderate arguments ($2 \leq |x| \leq 5$), we approximate the standard normal CDF
 
 ```math
 F(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}\,dt
 ```
 
-using Gauss–Legendre quadrature. The idea is to transform the integral to a fixed finite interval, then approximate it by a weighted sum of function evaluations:
+using a single application of Gauss–Legendre quadrature. Instead of splitting the interval $[0,x]$ into multiple panels (which would increase cost as $x$ grows), we map the entire interval directly to $[-1,1]$ and approximate it in one step:
 
 ```math
-\int_{a}^{b} f(t)\,dt \;\approx\; \sum_{i=1}^{n} w_i f(t_i),
+\int_a^b f(t)\,dt \;\approx\; \sum_{i=1}^n w_i f(t_i),
 ```
 
-where $t_i$ are the quadrature nodes (roots of Legendre polynomials) and $w_i$ are the corresponding weights. The advantage is that this method achieves high accuracy with relatively few evaluations, keeping the computational cost constant.
+where $t_i$ are the quadrature nodes (roots of Legendre polynomials) and $w_i$ are their corresponding weights.  
 
+This approach is constant-time: the number of function evaluations depends only on $n$ (the chosen quadrature order), not on the size of the integration interval. Thus, a fixed $n$ (e.g. 10, 12, or 14 points) guarantees the same computational cost for all $x$ in this range.
 
-In our case, the weight function is simply $w(t) = 1$, which makes Gauss–Legendre the appropriate choice (other Gaussian quadratures such as Gauss–Hermite or Gauss–Laguerre are used when exponential weight functions appear).
-
-To ensure constant-time evaluation, we use a fixed rule (10-point Gauss–Legendre), with nodes and weights obtained from published tables and hardcoded into the implementation. Reliable tables can be found online, e.g.:  
-[https://pomax.github.io/bezierinfo/legendre-gauss.html](Gaussian Quadrature Weights and Abscissae).
+In our case the weight function is simply $w(t)=1$, so Gauss–Legendre is the appropriate choice (other Gaussian quadratures such as Gauss–Hermite or Gauss–Laguerre are suited for integrals with exponential weights). The quadrature nodes and weights are taken from published tables and hardcoded into the implementation for reproducibility. Reliable values can be found at:  
+[https://pomax.github.io/bezierinfo/legendre-gauss.html](https://pomax.github.io/bezierinfo/legendre-gauss.html).
 
 ```julia
 using Dn02
