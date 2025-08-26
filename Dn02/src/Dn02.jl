@@ -3,17 +3,21 @@ module Dn02
 using SpecialFunctions
 using Distributions  # for Normal() and cdf()
 
+export erf_taylor, cdf_taylor, cdf_legendre, cdf_asymptotic, my_cdf
+
 include("taylor.jl")
 include("gauss_legendre.jl")
 include("asymptotic.jl")
 
 function my_cdf(x::Float64; 
-                  taylor_terms::Int=25, 
-                  asymptotic_terms::Int=5)
+                  taylor_terms::Int=10,
+                  gauss_terms::Int=12, 
+                  asymptotic_terms::Int=10)
 
     if x < 0
         return 1.0 - my_cdf(-x; 
-                              taylor_terms=taylor_terms, 
+                              taylor_terms=taylor_terms,
+                              gauss_terms=gauss_terms,
                               asymptotic_terms=asymptotic_terms)
     end
 
@@ -22,7 +26,7 @@ function my_cdf(x::Float64;
         return cdf_taylor(x; terms=taylor_terms)
 
     elseif x <= 5.0
-        return cdf_legendre(x)
+        return cdf_legendre(x, n=gauss_terms)
 
     else
         return cdf_asymptotic(x; terms=asymptotic_terms)

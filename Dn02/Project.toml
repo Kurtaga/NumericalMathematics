@@ -4,11 +4,17 @@ authors = ["Kurtaga <ak84795@student.uni-lj.si>"]
 version = "0.1.0"
 
 [deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 QuadGK = "1fd47b50-473d-5c70-9696-f719f8f3bcdc"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
+Weave = "44d3d7a6-8a23-5bf8-98c5-b353f8df5ec9"
 
 [compat]
+BenchmarkTools = "1.6.0"
 Distributions = "0.25.120"
 QuadGK = "2.11.2"
+Revise = "3.9.0"
 SpecialFunctions = "2.5.1"
+Weave = "0.10.12"
