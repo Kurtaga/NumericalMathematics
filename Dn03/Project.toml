@@ -1,0 +1,12 @@
+name = "Dn03"
+uuid = "a5399141-7ce7-45c1-aa92-90a6684ca4a8"
+authors = ["Kurtaga <ak84795@student.uni-lj.si>"]
+version = "0.1.0"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Weave = "44d3d7a6-8a23-5bf8-98c5-b353f8df5ec9"
+
+[compat]
+Test = "1.11.0"
+Weave = "0.10.12"
